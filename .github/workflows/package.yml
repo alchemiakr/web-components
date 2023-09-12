@@ -1,0 +1,46 @@
+name: Package
+
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/package.yml'
+      - 'core/**/*.ts'
+      - 'core/**/*.tsx'
+      - 'core/**/*.css'
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+
+env:
+  node-version: '18'
+
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+
+      # setup-node action creates an .npmrc file on the runner
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.node-version }}
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+          registry-url: 'https://npm.pkg.github.com'
+
+
+      - run: npm ci
+      - run: |
+          npm version "$(date +%Y).$(date +%j).$(( $(date +%s) % 86400 ))" --no-commit-hooks --no-git-tag-version
+      - run: npm pack
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
