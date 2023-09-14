@@ -40,7 +40,7 @@ jobs:
 
       - run: npm ci
       - run: |
-          npx tsc --noEmit false
+          npm run build
           rm -rf lib/.next lib/app
 
       - run: |
