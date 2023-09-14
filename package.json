@@ -36,6 +36,6 @@
     "next:lint": "next lint"
   },
   "exports": {
-    "./icon": "./lib/src/components/icon.jsx"
+    "./icon": "./lib/src/components/icon.js"
   }
 }
