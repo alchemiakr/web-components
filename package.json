@@ -1,6 +1,6 @@
 {
   "name": "@alchemiakr/web-components",
-  "version": "2023.257.28280",
+  "version": "2023.257.50076",
   "devDependencies": {
     "@types/node": "^20.5.0",
     "@types/react": "^18.2.20",
