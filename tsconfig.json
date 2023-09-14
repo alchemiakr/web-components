@@ -1,7 +1,13 @@
 {
   "compilerOptions": {
+    "outDir": "lib",
+    "declaration": true,
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -19,10 +25,23 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@alchemiakr/web-components/*": ["./src/components/*"]
+      "@/*": [
+        "./src/*"
+      ],
+      "@alchemiakr/web-components/*": [
+        "./src/components/*"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "lib",
+    "app"
+  ]
 }

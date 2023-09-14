@@ -40,6 +40,10 @@ jobs:
 
       - run: npm ci
       - run: |
+          npx tsc --noEmit false
+          rm -rf lib/.next lib/app
+
+      - run: |
           npm version "$(date +%Y).$(date +%j).$(( $(date +%s) % 86400 ))" --no-commit-hooks --no-git-tag-version
       - run: npm pack
       - run: npm publish --access public
