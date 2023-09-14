@@ -6,6 +6,7 @@ on:
   push:
     paths:
       - '.github/workflows/package.yml'
+      - 'package.json'
       - 'core/**/*.ts'
       - 'core/**/*.tsx'
       - 'core/**/*.css'
